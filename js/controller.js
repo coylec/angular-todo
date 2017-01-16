@@ -45,13 +45,14 @@ angular.module('RouteControllers', [])
 	.controller('LoginController', function($scope, $location, UserAPIService, store){
 
 		var URL = "https://morning-castle-91468.herokuapp.com/";
+		$scope.loginUser = {};
 
 		$scope.submitForm = function(){
-			if ($scope.loginForm.$isvalid){
+			if ($scope.loginForm.$valid){
 				$scope.loginUser.username = $scope.user.username;
 				$scope.loginUser.password = $scope.user.password;
 
-				UserAPIService.callAPI(URL + "accounts/api-token-auth", $scope.data).then(function(results){
+				UserAPIService.callAPI(URL + "accounts/api-token-auth/", $scope.loginUser).then(function(results){
 					$scope.token = results.data.token;
 					store.set('username', $scope.loginUser.username);
 					store.set('authToken', $scope.token);
