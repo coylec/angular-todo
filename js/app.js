@@ -18,5 +18,13 @@ angular.module('TodoApp').config(function($locationProvider, $routeProvider){
 	.when('/todo/edit/:id',{
 		templateUrl: 'templates/edit-todo.html',
 		controller: 'EditTodoController'
+	})
+	.when('/accounts/login', {
+		templateUrl: 'templates/login.html',
+		controller: 'LoginController'
+	})
+	.when('/accounts/logout', {
+		templateUrl: 'templates/logout.html',
+		controller: 'LogoutController'
 	});
 });
